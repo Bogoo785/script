@@ -25,5 +25,5 @@ common = items(last.split('整趟旅程固定 Shot List\n')[1].split('推薦固�
 intro = doc[0].get_text().split('使用方式\n')[1].split('全片片頭建議\n')
 data = dict(days=days, common=common, intro=compact(intro[0]), filmOpening=compact(intro[1]), questions=compact(last.split('推薦固定提問\n')[1].split('最後一句')[0]), finalLine=compact(last.split('最後一句\n')[1]))
 template = (root / 'site-template.html').read_text(encoding='utf-8')
-(root / '九州旅行手帳.html').write_text(template.replace('__TRIP_DATA__', json.dumps(data, ensure_ascii=False)), encoding='utf-8')
+(root / 'index.html').write_text(template.replace('__TRIP_DATA__', json.dumps(data, ensure_ascii=False)), encoding='utf-8')
 print('Built 9 days:', sum(len(d['itinerary']) for d in days), 'itinerary items;', sum(len(d['shots']) for d in days), 'shots')
