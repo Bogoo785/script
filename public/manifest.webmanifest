@@ -1,0 +1,13 @@
+{
+  "name": "九州每日必拍與口白腳本",
+  "short_name": "九州腳本",
+  "lang": "zh-Hant",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5ef",
+  "theme_color": "#234c40",
+  "icons": [
+    { "src": "/script-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/script-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

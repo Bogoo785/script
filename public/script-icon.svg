@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#234c40"/>
+  <path d="M128 91h185l71 72v243a17 17 0 0 1-17 17H145a17 17 0 0 1-17-17Z" fill="#f6f1df"/>
+  <path d="M313 91v57a15 15 0 0 0 15 15h56" fill="#bac9ad"/>
+  <rect x="165" y="141" width="97" height="56" rx="8" fill="#234c40"/>
+  <path d="m267 155 28-12v52l-28-12Z" fill="#234c40"/>
+  <g stroke="#a6b09a" stroke-width="12" stroke-linecap="round"><path d="M171 239h163M171 271h124M171 367h95"/></g>
+  <g transform="rotate(-12 272 316)">
+    <rect x="154" y="278" width="236" height="79" rx="6" fill="#f6f1df" stroke="#b74f3c" stroke-width="9"/>
+    <text x="272" y="334" text-anchor="middle" font-family="Microsoft JhengHei, sans-serif" font-size="53" font-weight="700" fill="#b74f3c">機密</text>
+  </g>
+</svg>
