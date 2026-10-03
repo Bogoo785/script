@@ -1,0 +1,32 @@
+import { chromium } from '@playwright/test'
+import assert from 'node:assert/strict'
+const browser = await chromium.launch({ channel: 'msedge', headless: true })
+const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } })
+const errors = []
+page.on('pageerror', error => errors.push(error.message))
+await page.goto('http://127.0.0.1:5173')
+await page.getByRole('heading', { name: '高雄 → 博多 → 鹿兒島' }).waitFor()
+const first = page.locator('.check-row input').first()
+await first.check()
+await page.reload()
+assert(await first.isChecked(), 'Progress persists after reload')
+await page.getByRole('button', { name: /02 DAY 2/ }).click()
+assert(!(await first.isChecked()), 'Each day has separate progress')
+await page.getByRole('button', { name: /01 DAY 1/ }).click()
+assert(await first.isChecked())
+await page.getByLabel('只看未完成').check()
+assert.equal(await page.locator('.check-row').count(), 8)
+await page.getByLabel('只看未完成').uncheck()
+await first.uncheck()
+await page.screenshot({ path: 'tmp/checklist-desktop.png', fullPage: true })
+await page.setViewportSize({ width: 390, height: 844 })
+assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'No mobile horizontal overflow')
+await page.screenshot({ path: 'tmp/checklist-mobile.png', fullPage: true })
+for (let i = 1; i <= 9; i++) {
+  await page.goto(`http://127.0.0.1:5173/#day-${i}`)
+  await page.locator('h2').waitFor()
+  assert.equal(await page.locator('.check-card').count(), 1)
+}
+assert.deepEqual(errors, [])
+await browser.close()
+console.log('PASS: saved progress, day isolation, unfinished filter, all nine days, mobile layout, no runtime errors')
