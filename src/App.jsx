@@ -32,7 +32,7 @@ export default function App() {
       <div className="card-heading"><span className="section-icon">“</span><div><p>VLOG SCRIPT</p><h3 id="narration-title">今日口白</h3></div></div>
       <div className="narration-body">
         <p className="narration-note">照著說，或換成自己的語氣；空白處留給當天的真實感受。</p>
-        {Object.entries({ filmOpening: '全片片頭口白', opening: '開場口白', closing: '收尾口白', filmClosing: '全片最後一句' }).map(([key, title]) => narration[day.day][key] && <div className="script-block" key={`${day.day}-${key}`}><h4>{title}</h4><blockquote>{narration[day.day][key]}</blockquote></div>)}
+        {Object.entries({ filmOpeningSuggestion: '全片片頭建議', filmOpening: '全片片頭口白', opening: '開場口白', closing: '收尾口白', filmClosing: '全片最後一句' }).map(([key, title]) => narration[day.day][key] && <div className="script-block" key={`${day.day}-${key}`}><h4>{title}</h4><blockquote>{narration[day.day][key]}</blockquote></div>)}
       </div>
     </section>
     <div className="bottom-nav"><button disabled={selected === 0} onClick={() => selectDay(selected - 1)}>← 前一天</button><span>{selected + 1} / 9 DAYS</span><button disabled={selected === 8} onClick={() => selectDay(selected + 1)}>下一天 →</button></div><footer>必拍清單依「必拍.pdf」整理，口白依「九州 YouTube 拍攝腳本」整理。</footer></div></div></main>
